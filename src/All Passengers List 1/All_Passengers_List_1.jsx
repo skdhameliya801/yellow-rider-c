@@ -251,8 +251,8 @@ const All_Passengers_List_1 = () => {
 
                         let data = JSON.stringify({
                             start_n : N,
-                            pickup_city : document.getElementById("pickup_city").value.toUpperCase(),
-                            drop_city : document.getElementById("drop_city").value.toUpperCase(),
+                            pickup_city : document.getElementById("pickup_city").value.trim().toUpperCase(),
+                            drop_city : document.getElementById("drop_city").value.trim().toUpperCase(),
                             trip_date : current_date_str,
 
                         });

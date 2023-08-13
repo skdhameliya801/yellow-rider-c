@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CONSTANTS } from '../CONSTANTS'
 import axios from 'axios'; 
 import Swal from 'sweetalert2'
+import { OverlayTrigger, Popover } from "react-bootstrap";
 
 const Passenger_View_1 = () => {
 
@@ -13,6 +14,28 @@ const Passenger_View_1 = () => {
     // useEffect(() => {
     //     document.getElementById("response_message").style.display = "none";
     // }, [])
+
+    function PopoverPositionedExample(popover_placement, popover_bodyText) {
+        return (
+          <>
+              <OverlayTrigger
+                trigger="click"
+                key={popover_placement}
+                placement={popover_placement}
+                overlay={
+                  <Popover id={`popover-positioned-${popover_placement}`}>
+                    <Popover.Header as="h3" style={{"background":"black","color":"white"}}>{`Rider will contact you on this whatsapp number`}</Popover.Header>
+                    {/* <Popover.Body style={{"background":"black","color":"white"}}>
+                      <p>{popover_bodyText}</p>
+                    </Popover.Body> */}
+                  </Popover>
+                }
+              >
+                <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"white","margin":"5px","cursor":"pointer"}}>?</b>
+              </OverlayTrigger>
+          </>
+        );
+      }
 
     let sweet_alert = (event) => {
         event.preventDefault();
@@ -37,14 +60,14 @@ const Passenger_View_1 = () => {
         
         document.getElementById("submit_ride_detail_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
-        let full_name = document.getElementById("full_name").value
-        let full_pickup_address = document.getElementById("full_pickup_address").value
-        let pickup_city = document.getElementById("pickup_city").value.toUpperCase()
+        let full_name = document.getElementById("full_name").value.trim()
+        let full_pickup_address = document.getElementById("full_pickup_address").value.trim()
+        let pickup_city = document.getElementById("pickup_city").value.toUpperCase().trim()
         
         // let pickup_landmark = document.getElementById("pickup_landmark").value
-        let phone_no = document.getElementById("phone_no").value
-        let full_drop_address = document.getElementById("full_drop_address").value
-        let drop_city = document.getElementById("drop_city").value.toUpperCase()
+        let phone_no = document.getElementById("phone_no").value.trim()
+        let full_drop_address = document.getElementById("full_drop_address").value.trim()
+        let drop_city = document.getElementById("drop_city").value.toUpperCase().trim()
         let arrive_by_time = document.getElementById("arrive_by_time").value
         
         // let arrive_by_HH = document.getElementById("arrive_by_HH").value
@@ -126,21 +149,21 @@ const Passenger_View_1 = () => {
                     <h1 className='text-center'><b>Want ride on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1>
                     <div className="col-sm-6 mt-5">
                         <label className="form-label"> <b>*Full Name : </b> </label>
-                        <input type="text" id='full_name' name='entry.578647043' className="form-control border-5" required />
+                        <input type="text" id='full_name' className="form-control border-5" required />
                     </div>
                 </div>
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Pickup Address : </b> <br/> (Format :  House no, Street/Apartment name, Pincode)</label>
-                    <input type="text" id='full_pickup_address' name='entry.946132332' className="form-control border-5" required />
+                    <input type="text" id='full_pickup_address' minLength={"5"} className="form-control border-5" required />
                     </div>
                 </div>
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Pickup city : </b> </label>
-                    <input type="text" id='pickup_city' className="form-control border-5" required />
+                    <input type="text" id='pickup_city' minLength={"3"} className="form-control border-5" required />
                     </div>
                 </div>
 
@@ -177,21 +200,22 @@ const Passenger_View_1 = () => {
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Drop Address : </b> <br/> (Format :  House no, Street/Apartment name, Pincode)</label>
-                    <input type="text" className="form-control border-5" id='full_drop_address' name='entry.1059112272' required />
+                    <input type="text" className="form-control border-5" minLength={"5"} id='full_drop_address' required />
                     </div>
                 </div>
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Drop city : </b> </label>
-                    <input type="text" id='drop_city' className="form-control border-5" required />
+                    <input type="text" id='drop_city' minLength={"3"} className="form-control border-5" required />
                     </div>
                 </div>
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
-                    <label className="form-label"> <b>*Phone No :</b> <br/> (Format : only 10 digits canadian number, avoid country code)  </label>
-                    <input type="number" className="form-control border-5" id='phone_no' name='entry.1434501103' required />
+                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : only 10 digits canadian number, avoid country code) 
+                    </label>
+                    <input type="text" pattern="[1-9]{1}[0-9]{9}" className="form-control border-5" id='phone_no'  required />
                     </div>
                 </div>
                 
@@ -199,7 +223,7 @@ const Passenger_View_1 = () => {
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Arrive By Time at Drop Address : </b> </label>
                     {/* <input type="time" className="form-control border-5" id='arrive_by_time' name='entry.452012505' required /> */}
-                    <select className="form-select border-5" id='arrive_by_time' name='entry.1343336432' required>
+                    <select className="form-select border-5" id='arrive_by_time' required>
                         <option selected>Choose...</option>
                         <option value="12:30 AM">12:30 AM</option>
                         <option value="1:00 AM">1:00 AM</option>
