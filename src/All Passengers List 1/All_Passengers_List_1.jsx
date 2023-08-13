@@ -165,7 +165,7 @@ const All_Passengers_List_1 = () => {
             setN(N+10);
             //-------------------- setTrips_data([])
             trips_data.length = 0;
-
+            setTrips_data([])
             
             console.log(trips_data,N)
 
