@@ -6,364 +6,318 @@ import Swal from 'sweetalert2'
 
 const All_Passengers_List_1 = () => {
 
-  const [N, setN] = useState(-10)
-  let [trips_data, setTrips_data] = useState([])
-  const [user_in_session, setUser_in_session] = useState("g")
+    let [N, setN] = useState(0)
+    let [trips_data, setTrips_data] = useState([])
+    const [user_in_session, setUser_in_session] = useState("g")
 
-  useEffect(() => {
-    let rider_data_str = localStorage.getItem("l_r_d")
-    let rider_data_obj = JSON.parse(rider_data_str)
-    document.getElementById("no_trip_found").style.display = "none"
-    
-    if(rider_data_obj != null || user_in_session == "g"){
-        document.getElementById("choose_btn").click();
-    }
-    else{
-        window.location.replace("/")
-    }
-    
+    useEffect(() => {
+        // setN(N+10)
+        console.log("first use effect", N)
+        let rider_data_str = localStorage.getItem("l_r_d")
+        let rider_data_obj = JSON.parse(rider_data_str)
+        document.getElementById("no_trip_found").style.display = "none"
+        document.getElementById("loadMoreBtn").style.display = "none"
 
-    /*
-    let rider_data_str = localStorage.getItem("l_r_d")
-    let rider_data_obj = JSON.parse(rider_data_str)
-    
-    if(rider_data_obj != null){
+        
+        if(rider_data_obj != null || user_in_session == "g"){
+            document.getElementById("choose_btn").click();
+        }
+        else{
+            window.location.replace("/")
+        }
+        
 
-      let data1 = JSON.stringify({
-        "whatsapp_no": rider_data_obj.whn,
-      });
-      let config = {
-              method: 'post',
-              maxBodyLength: Infinity,
-              url: CONSTANTS.server_url + '/get_rider',
-              headers: { 
-                'Content-Type': 'application/json'
-              },
-              data : data1
-            };
-      axios.request(config)
-      .then((response) => {
-        if(response.data.response == "r_f"){
-          // rider found
-          if(response.data.rider_data.token1 == rider_data_obj.tok){
-            // token same means old login
-            console.log("same")
-          }
-          else{
-            // token are not same means new login
+        /*
+        let rider_data_str = localStorage.getItem("l_r_d")
+        let rider_data_obj = JSON.parse(rider_data_str)
+        
+        if(rider_data_obj != null){
+
+        let data1 = JSON.stringify({
+            "whatsapp_no": rider_data_obj.whn,
+        });
+        let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: CONSTANTS.server_url + '/get_rider',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data : data1
+                };
+        axios.request(config)
+        .then((response) => {
+            if(response.data.response == "r_f"){
+            // rider found
+            if(response.data.rider_data.token1 == rider_data_obj.tok){
+                // token same means old login
+                console.log("same")
+            }
+            else{
+                // token are not same means new login
+                window.location.href = "/"
+                // console.log("not same")
+            }
+            }
+            else if(response.data.response == "r_n_f"){
+            // rider not found
+            alert(response.data.message)
             window.location.href = "/"
-            // console.log("not same")
-          }
-        }
-        else if(response.data.response == "r_n_f"){
-          // rider not found
-          alert(response.data.message)
-          window.location.href = "/"
+            }
+            else{
+            alert("something went wrong")
+            window.location.href = "/"
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+        
         }
         else{
-          alert("something went wrong")
-          window.location.href = "/"
+        window.location.href = "/"
+        // alert("Please login")
         }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      
-    }
-    else{
-      window.location.href = "/"
-      // alert("Please login")
-    }
-    */
+        */
 
-	
-  }, [])
-  
-  useEffect(() => {
-    // console.log("useEffect---",N)
-    document.getElementById("no_trip_found").style.display = "none"
+        
+    }, [])
 
-    let rider_data_str = localStorage.getItem("l_r_d")
-    let rider_data_obj = JSON.parse(rider_data_str)
-    
-    if(rider_data_obj != null || user_in_session == "g"){
-                    let d = new Date();
-                    let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
-                    let exp_date_str = rider_data_obj?.sub_exp_dat;
-                    const current_date = new Date(current_date_str); // Assuming YYYY-MM-DD format
-                    const exp_date = new Date(exp_date_str); // Assuming YYYY-MM-DD format
-                    
-                    // console.log(current_date_str)
-                    // console.log(exp_date_str)
-                    // console.log(current_date)
-                    // console.log(exp_date)
-                    if (current_date <= exp_date) {
-                        // console.log("cd")
-                        // alert("The current date is before the expiration date.");
-                        // console.log("The current date is before the expiration date.");
-                        // setN(N)
-                        setUser_in_session(true)
-                        call_trip_data_api()
-    
-                    } 
-                    else if (current_date > exp_date) {
-                        // console.log("ed")
-                        // alert("Your subscription has been expired.");
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Your subscription has been expired.'
-                            // footer: '<a href="">Why do I have this issue?</a>'
-                        })
-                        // console.log("Subscription has been expired");
-                        call_trip_data_api()
-                    }
-                    else{
-                        // console.log("else cd ed")
-                        call_trip_data_api()
-                    }
-    }
-    else{
-        window.location.replace("/")
-    }
-
-  }, [N])
-  
-  let choose_btn = () => {
-    // console.log("------choose_btn")
-    document.getElementById("loadMoreBtn").style.display = "none"
-    document.getElementById("no_trip_found").style.display = "none"
-    setTrips_data([])
-  }
-
-  let form_choose_cities = (event) => {
-    // console.log("form_choose_cities-----------")
-    event.preventDefault(); 
-    // setN(N+10)
-    setN(0)
-    
-    // find_btn()
-
-    // event.preventDefault(); 
-        // document.getElementById("choose_btn").click();
-        document.getElementById("choose_city_find_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
-
-        // console.log("first",trips_data)
-        // setTrips_data([])    
-        // console.log("second",trips_data)
+    useEffect(() => {
+        console.log("second use effect",N)
+        document.getElementById("no_trip_found").style.display = "none"
 
         let rider_data_str = localStorage.getItem("l_r_d")
         let rider_data_obj = JSON.parse(rider_data_str)
         
-        if(rider_data_obj != null || user_in_session == 'g'){
-
-            let data1 = JSON.stringify({
-                "whatsapp_no": rider_data_obj?.whn,
-            });
-            let config = {
-                    method: 'post',
-                    maxBodyLength: Infinity,
-                    url: CONSTANTS.server_url + '/get_rider',
-                    headers: { 
-                        'Content-Type': 'application/json'
-                    },
-                    data : data1
-                    };
-            axios.request(config)
-            .then((response) => {
-                document.getElementById("choose_btn").click();
-                document.getElementById("choose_city_find_btn").innerHTML = "Find";
-                if(response.data.response == "r_f"){
-                    // rider found
-                    if(response.data.rider_data.token1 == rider_data_obj.tok){
-                        // token same means old login
-                        // console.log("same")
-                        // setTrips_data([])
-                        // setN(-2)
-                        call_trip_data_api()
-                    }
-                    else{
-                        // token are not same means new login
-                        // alert("At a time you can do only one login. So you are now logged out from all the places. Please login here again.")
-                        Swal.fire(
-                            'Only one login?',
-                            'At a time you can do only one login. So you are now logged out from all the places. Please login here again.',
-                            'warning'
-                          )
-                        window.location.replace("/login")
-                        // console.log("not same")
-                    }
-                }
-                else if(response.data.response == "r_n_f"){
-                    // rider not found
-                    // console.log("rider not found")
-                    setUser_in_session("g")
-                    call_trip_data_api()
-                    // alert(response.data.message)
-                    // window.location.replace("/")
-                }
-                else{
-                    // alert("something went wrong")
-                    Swal.fire(
-                        '',
-                        'Something went wrong',
-                        'error'
-                    )
-                    window.location.replace("/")
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        if(rider_data_obj != null || user_in_session == "g"){
+                        let d = new Date();
+                        let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
+                        let exp_date_str = rider_data_obj?.sub_exp_dat;
+                        const current_date = new Date(current_date_str); // Assuming YYYY-MM-DD format
+                        const exp_date = new Date(exp_date_str); // Assuming YYYY-MM-DD format
+                        
+                        // console.log(current_date_str)
+                        // console.log(exp_date_str)
+                        // console.log(current_date)
+                        // console.log(exp_date)
+                        if (current_date <= exp_date) {
+                            // console.log("cd")
+                            // alert("The current date is before the expiration date.");
+                            // console.log("The current date is before the expiration date.");
+                            // setN(N)
+                            setUser_in_session(true)
+                            // if(N != -10){
+                                call_trip_data_api()
+                            // }
+                            // else{
+                            //     setN(N+10)
+                            // }
         
-        }
-        else{
-        window.location.replace("/")
-        // alert("Please login")
-        }
-
-  }
-
-let find_btn = (event) => {
-        // event.preventDefault(); 
-        // document.getElementById("choose_btn").click();
-        document.getElementById("choose_city_find_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
-
-        
-
-        let rider_data_str = localStorage.getItem("l_r_d")
-        let rider_data_obj = JSON.parse(rider_data_str)
-        
-        if(rider_data_obj != null || user_in_session == 'g'){
-
-            let data1 = JSON.stringify({
-                "whatsapp_no": rider_data_obj?.whn,
-            });
-            let config = {
-                    method: 'post',
-                    maxBodyLength: Infinity,
-                    url: CONSTANTS.server_url + '/get_rider',
-                    headers: { 
-                        'Content-Type': 'application/json'
-                    },
-                    data : data1
-                    };
-            axios.request(config)
-            .then((response) => {
-                document.getElementById("choose_btn").click();
-                document.getElementById("choose_city_find_btn").innerHTML = "Find";
-                if(response.data.response == "r_f"){
-                    // rider found
-                    if(response.data.rider_data.token1 == rider_data_obj.tok){
-                        // token same means old login
-                        // console.log("same")
-                        // setTrips_data([])
-                        // setN(-2)
-                        call_trip_data_api()
-                    }
-                    else{
-                        // token are not same means new login
-                        // alert("At a time you can do only one login. So you are now logged out from all the places. Please login here again.")
-                        Swal.fire(
-                            'Only one login?',
-                            'At a time you can do only one login. So you are now logged out from all the places. Please login here again.',
-                            'warning'
-                          )
-                        window.location.replace("/login")
-                        // console.log("not same")
-                    }
-                }
-                else if(response.data.response == "r_n_f"){
-                    // rider not found
-                    // console.log("rider not found")
-                    setUser_in_session("g")
-                    call_trip_data_api()
-                    // alert(response.data.message)
-                    // window.location.replace("/")
-                }
-                else{
-                    // alert("something went wrong")
-                    Swal.fire(
-                        '',
-                        'Something went wrong',
-                        'error'
-                    )
-                    window.location.replace("/")
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        
-        }
-        else{
-        window.location.replace("/")
-        // alert("Please login")
-        }
-
-}
-
-let call_trip_data_api = () => {
-    // console.log("call_trip_data_api-------",N)
-    if(N != -10){
-        let d = new Date();
-        let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
-
-                    let data = JSON.stringify({
-                        start_n : N,
-                        pickup_city : document.getElementById("pickup_city").value.toUpperCase(),
-                        drop_city : document.getElementById("drop_city").value.toUpperCase(),
-                        trip_date : current_date_str,
-
-                    });
-
-                        let config = {
-                            method: 'post',
-                            maxBodyLength: Infinity,
-                            url: CONSTANTS.server_url + '/get_filtered_trips_data',
-                            headers: { 
-                                'Content-Type': 'application/json'
-                            },
-                            data : data
-                        };
-                
-                    axios.request(config)
-                    .then((response) => {
-                        // console.log(response.data);
-                        document.getElementById("loadMoreBtn").innerHTML = "Find more";
-                        if(response.data.length != 0){
-                            document.getElementById("loadMoreBtn").style.display = "block"
-                            setTrips_data([...trips_data, ...response.data]);
-                        }
-                        else{
-                            document.getElementById("loadMoreBtn").style.display = "none"
-                            console.log("that's it")
-                            document.getElementById("no_trip_found").style.display = "block"
-                            document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
+                        } 
+                        else if (current_date > exp_date) {
+                            // console.log("ed")
+                            // alert("Your subscription has been expired.");
                             Swal.fire({
-                                icon: 'success',
-                                title: "That's it",
-                                text: "We showed you all the available trips based on your chosen cities."
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Your subscription has been expired.'
                                 // footer: '<a href="">Why do I have this issue?</a>'
                             })
-                            // setN(0)
+                            // console.log("Subscription has been expired");
+                            // if(N != -10){
+                                call_trip_data_api()
+                            // }
+                            // else{
+                                // setN(N+10)
+                            // }
                         }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
+                        else{
+                            // console.log("else cd ed")
+                            // if(N != -10){
+                                call_trip_data_api()
+                            // }
+                            // else{
+                                // setN(N+10)
+                            // }
+                        }
+        }
+        else{
+            window.location.replace("/")
+        }
+
+    }, [N])
+    
+    // let choose_btn = () => {
+    //     // console.log("------choose_btn")
+    //     document.getElementById("loadMoreBtn").style.display = "none"
+    //     document.getElementById("no_trip_found").style.display = "none"
+    //     setTrips_data([])
+    // }
+
+    let find_btn = (event) => {
+            event.preventDefault(); 
+            // document.getElementById("choose_btn").click();
+            
+            document.getElementById("choose_city_find_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+            // setN(-10)
+            N=0
+            setN(N+10);
+            //-------------------- setTrips_data([])
+            trips_data.length = 0;
+
+            
+            console.log(trips_data,N)
+
+            let rider_data_str = localStorage.getItem("l_r_d")
+            let rider_data_obj = JSON.parse(rider_data_str)
+            
+            if(rider_data_obj != null || user_in_session == 'g'){
+
+                let data1 = JSON.stringify({
+                    "whatsapp_no": rider_data_obj?.whn,
+                });
+                let config = {
+                        method: 'post',
+                        maxBodyLength: Infinity,
+                        url: CONSTANTS.server_url + '/get_rider',
+                        headers: { 
+                            'Content-Type': 'application/json'
+                        },
+                        data : data1
+                        };
+                axios.request(config)
+                .then((response) => {
+                    document.getElementById("choose_btn").click();
+                    document.getElementById("choose_city_find_btn").innerHTML = "Find";
+                    if(response.data.response == "r_f"){
+                        // rider found
+                        if(response.data.rider_data.token1 == rider_data_obj.tok){
+                            // token same means old login
+                            // console.log("same")
+                            // setTrips_data([])
+                            // setN(-2)
+                            call_trip_data_api()
+                        }
+                        else{
+                            // token are not same means new login
+                            // alert("At a time you can do only one login. So you are now logged out from all the places. Please login here again.")
+                            Swal.fire(
+                                'Only one login?',
+                                'At a time you can do only one login. So you are now logged out from all the places. Please login here again.',
+                                'warning'
+                            )
+                            window.location.replace("/login")
+                            // console.log("not same")
+                        }
+                    }
+                    else if(response.data.response == "r_n_f"){
+                        // rider not found
+                        // console.log("rider not found")
+                        setUser_in_session("g")
+                        call_trip_data_api()
+                        // alert(response.data.message)
+                        // window.location.replace("/")
+                    }
+                    else{
+                        // alert("something went wrong")
+                        Swal.fire(
+                            '',
+                            'Something went wrong',
+                            'error'
+                        )
+                        window.location.replace("/")
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            
+            }
+            else{
+            window.location.replace("/")
+            // alert("Please login")
+            }
+
     }
-}
 
-let find_more = () => {
-    // console.log("1-find_more---", N)
-    document.getElementById("loadMoreBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
-    setN(N+10)
-    // console.log("2-find_more---", N)
+    
 
-}
+    let call_trip_data_api = () => {
+        console.log("call_trip_data_api-------",N)
+        if(N >= 0){
+            let d = new Date();
+            let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
 
-  return (
+                        let data = JSON.stringify({
+                            start_n : N,
+                            pickup_city : document.getElementById("pickup_city").value.toUpperCase(),
+                            drop_city : document.getElementById("drop_city").value.toUpperCase(),
+                            trip_date : current_date_str,
+
+                        });
+
+                            let config = {
+                                method: 'post',
+                                maxBodyLength: Infinity,
+                                url: CONSTANTS.server_url + '/get_filtered_trips_data',
+                                headers: { 
+                                    'Content-Type': 'application/json'
+                                },
+                                data : data
+                            };
+                    
+                        axios.request(config)
+                        .then((response) => {
+                            // console.log(response.data);
+                            document.getElementById("loadMoreBtn").innerHTML = "Find more";
+                            if(response.data.length != 0){
+                                document.getElementById("loadMoreBtn").style.display = "block"
+                                document.getElementById("no_trip_found").style.display = "none"
+                                setTrips_data([...trips_data, ...response.data]);
+                            }
+                            else{
+                                document.getElementById("loadMoreBtn").style.display = "none"
+                                // document.getElementById("no_trip_found").style.display = "block"
+                                    // document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
+                                console.log("that's it",N)
+                                if(N != 0){
+                                    document.getElementById("no_trip_found").style.display = "block"
+                                    document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
+                                    // Swal.fire({
+                                    //     icon: 'success',
+                                    //     title: "That's it",
+                                    //     text: "We showed you all the available trips based on your chosen cities."
+                                    //     // footer: '<a href="">Why do I have this issue?</a>'
+                                    // })
+                                }
+                                // setN(0)
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+        }
+    }
+
+    let find_more = () => {
+        // console.log("1-find_more---", N)
+        document.getElementById("loadMoreBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+        setN(N+10)
+        console.log("find_more",N)
+        // console.log("2-find_more---", N)
+
+    }
+
+    let choose_btn = () => {
+        // setTrips_data([])
+        // setN(0)
+        console.log("choose_btn",N)
+        document.getElementById("no_trip_found").style.display = "block"
+        document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
+    }
+
+    return (
     
     <>
     {/* {is_rider_online &&  <p>user's whatsapp number</p> } */}
@@ -383,7 +337,7 @@ let find_more = () => {
                         <div className='container'>
                             <div className='row'>
                                 <div className='col-12'>
-                                        <form class="row g-3" onSubmit={form_choose_cities}>
+                                        <form class="row g-3" onSubmit={find_btn}>
                                             {/* <div class="col-md-6">
                                                 <label for="inputEmail4" class="form-label">Pickup City : </label>
                                                 <input type="text" class="form-control" id="trip_date" disabled/>
@@ -426,7 +380,7 @@ let find_more = () => {
 
         <center>
             <p id='response_message'></p>
-                <button id='loadMoreBtn' className='mb-5 btn btn-success' variant="success" onClick={find_more}>
+                <button id='loadMoreBtn' className='mb-5 btn btn-success' variant="success" onClick={() => setN(N+10)}>
                     Find more
                 </button>
                 <p id='no_trip_found' className='mt-5 p-5 text-center'></p>

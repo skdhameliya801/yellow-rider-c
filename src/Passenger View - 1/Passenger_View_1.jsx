@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CONSTANTS } from '../CONSTANTS'
 import axios from 'axios'; 
+import Swal from 'sweetalert2'
 
 const Passenger_View_1 = () => {
 
@@ -12,9 +13,27 @@ const Passenger_View_1 = () => {
     // useEffect(() => {
     //     document.getElementById("response_message").style.display = "none";
     // }, [])
-    
-    let passenger_form_submit = (event) => {
+
+    let sweet_alert = (event) => {
         event.preventDefault();
+
+        Swal.fire({
+            title: 'Are you sure want to post this trip?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#198754',
+            cancelButtonColor: '#dc3545',
+            confirmButtonText: 'Yes, post it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                passenger_form_submit()
+            }
+        })
+    }
+    
+    let passenger_form_submit = () => {
+        // event.preventDefault();
         
         document.getElementById("submit_ride_detail_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
@@ -101,7 +120,7 @@ const Passenger_View_1 = () => {
             <form 
                 id='contact_us_form'
                 method='POST'
-                onSubmit={passenger_form_submit}>
+                onSubmit={sweet_alert}>
                 
                 <div className="row mt-5 justify-content-center">
                     <h1 className='text-center'><b>Want ride on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1>
