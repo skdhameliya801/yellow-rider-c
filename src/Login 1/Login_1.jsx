@@ -103,7 +103,7 @@ const Login_1 = () => {
                 {/* </b> */}
             {/* </marquee> */}
 
-                <h1 className="text-center">Yellow Ride - Login </h1>
+                <h1 className="text-center">{CONSTANTS.app_name} - Login </h1>
 
                 <p className="text-center bg-danger p-2 text-light" id='response_message'></p>
 

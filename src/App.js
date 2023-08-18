@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Link } from 'react-router-dom';
+import { CONSTANTS } from './CONSTANTS';
 
 function App() {
 
@@ -56,7 +57,7 @@ function App() {
 <div className="d-flex flex-column vh-100 bg-warning">
       <header className="p-3">
         {/* Header content */}
-        <h1 className='text-center mt-5'>Welcome to Yellow Ride</h1>
+        <h1 className='text-center mt-5'>Welcome to {CONSTANTS.app_name}</h1>
       </header>
       <main className="flex-grow-1 d-flex align-items-center justify-content-center">
         <div className="d-flex align-items-center justify-content-center">
