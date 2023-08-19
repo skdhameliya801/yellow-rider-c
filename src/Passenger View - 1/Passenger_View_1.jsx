@@ -35,7 +35,7 @@ const Passenger_View_1 = () => {
               </OverlayTrigger>
           </>
         );
-      }
+    }
 
     let sweet_alert = (event) => {
         event.preventDefault();
@@ -213,7 +213,7 @@ const Passenger_View_1 = () => {
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
-                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : only 10 digits canadian number, avoid country code) 
+                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : 10 digits WhatsApp number with country code (e.g. +15483333597)) 
                     </label>
                     <input type="text" pattern="[1-9]{1}[0-9]{9}" className="form-control border-5" id='phone_no'  required />
                     </div>

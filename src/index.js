@@ -10,11 +10,13 @@ import Forgot_Password from './Forgot Password/Forgot_Password';
 import Passenger_View_1 from './Passenger View - 1/Passenger_View_1';
 import All_Passengers_List_1 from './All Passengers List 1/All_Passengers_List_1';
 import Login_1 from './Login 1/Login_1';
+import Register_Rider from './Register/Register_Rider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
+      <Route exact path="/riderregisterbyadmin" element={<Register_Rider />} />
       <Route exact path="/" element={<App />} />
       <Route exact path="/login" element={<Login_1 />} />
       <Route exact path="/passenger_list" element={<All_Passengers_List_1 />} />
