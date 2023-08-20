@@ -65,19 +65,19 @@ function App() {
           <div className="container text-center">
             <div className="row">
               <div className="col-12">
-                
-                  <Link to={"/login"} className='text-black' style={{"textDecoration":"none"}}>
-                    <div className='rider_div bg-light p-5 rounded-5'>
-                      <h5>I am Rider</h5>
+
+                  <Link to={"/passenger_form"} className='text-black' style={{"textDecoration":"none"}}>
+                    <div className='passenger_div bg-light p-5 rounded-5'>
+                      <h5>I am Passenger</h5>
                     </div>
                   </Link>
                 
               </div>
               <div className="col-12 mt-5">
                 
-                  <Link to={"/passenger_form"} className='text-black' style={{"textDecoration":"none"}}>
-                    <div className='passenger_div bg-success p-5 rounded-5'>
-                      <h5>I am Passenger</h5>
+                <Link to={"/login"} className='text-black' style={{"textDecoration":"none"}}>
+                    <div className='rider_div bg-success p-5 rounded-5'>
+                      <h5>I am Rider</h5>
                     </div>
                   </Link>
                 
@@ -97,7 +97,7 @@ function App() {
           
         </div>
       </main>
-      <footer className="bg-warning p-3">
+      <footer className="bg-warning p-3 mb-5">
         {/* Footer content */}
         <h4 className='text-center'>Have a nice ride...!</h4>
       </footer>

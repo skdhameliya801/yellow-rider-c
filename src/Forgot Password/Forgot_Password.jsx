@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { CONSTANTS } from '../CONSTANTS';
 import axios from 'axios'; 
 import Swal from 'sweetalert2'
+import { OverlayTrigger, Popover } from 'react-bootstrap';
 
 const Forgot_Password = () => {
 
@@ -58,8 +59,31 @@ const Forgot_Password = () => {
         }
     }
 
+    function PopoverPositionedExample(popover_placement, popover_bodyText) {
+        return (
+          <>
+              <OverlayTrigger
+                trigger="click"
+                key={popover_placement}
+                placement={popover_placement}
+                overlay={
+                  <Popover id={`popover-positioned-${popover_placement}`}>
+                    <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`format : WhatsApp no#code ( e.g. +15483333597#a1b2c3 )`}</Popover.Header>
+                    {/* <Popover.Body style={{"background":"black","color":"white"}}>
+                      <p>{popover_bodyText}</p>
+                    </Popover.Body> */}
+                  </Popover>
+                }
+              >
+                <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"yellow","margin":"5px","cursor":"pointer"}}>?</b>
+              </OverlayTrigger>
+          </>
+        );
+      }
+
   return (
     <div className="container">
+        <h1 className="text-center mt-5">{CONSTANTS.app_name} - Forgot Password </h1>
         <div className="row">
             <div className="col">
                 <div className="d-flex justify-content-center align-items-center" style={{"height":"100vh"}}>
@@ -67,13 +91,13 @@ const Forgot_Password = () => {
                         <h1 className="text-center">Forgot Password</h1>
                         <p className="text-center bg-danger p-2 text-white" id='response_message'></p>
                         <div className="m-3">
-                            <label for="formGroupExampleInput" className="form-label">WhatsApp No.</label>
-                            <input type="number" className="form-control bg-warning" id="whatsapp_no" placeholder="enter only 10 digits" required />
+                            <label className="form-label">Username { PopoverPositionedExample("top", "( Country / State / City )")} </label>
+                            <input type="number" className="form-control bg-warning" id="whatsapp_no" placeholder="enter username" required />
                         </div>
                         <div className="m-3">
                             <label for="formGroupExampleInput" className="form-label">Write your security code</label>
                             <input type="text" className="form-control bg-warning" id="security_code" placeholder="enter security code" required />
-                            <b>Not remembered? <a href="https://wa.me/+15483333597?text=Hi, I want/forgot my security code." target='_blank'>click here to chat with us</a></b>
+                            <b>forgot? <a href="https://wa.me/+15483333597?text=Hi, I forgot my security code." target='_blank'>click here to chat with us</a></b>
                         </div>
                         <div className="m-3">
                             <label for="formGroupExampleInput" className="form-label">Password</label>

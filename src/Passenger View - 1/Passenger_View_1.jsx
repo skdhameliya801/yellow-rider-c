@@ -24,14 +24,14 @@ const Passenger_View_1 = () => {
                 placement={popover_placement}
                 overlay={
                   <Popover id={`popover-positioned-${popover_placement}`}>
-                    <Popover.Header as="h3" style={{"background":"black","color":"white"}}>{`Rider will contact you on this whatsapp number`}</Popover.Header>
+                    <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`Rider will contact you on this WhatsApp number`}</Popover.Header>
                     {/* <Popover.Body style={{"background":"black","color":"white"}}>
                       <p>{popover_bodyText}</p>
                     </Popover.Body> */}
                   </Popover>
                 }
               >
-                <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"white","margin":"5px","cursor":"pointer"}}>?</b>
+                <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"yellow","margin":"5px","cursor":"pointer"}}>?</b>
               </OverlayTrigger>
           </>
         );
@@ -86,7 +86,7 @@ const Passenger_View_1 = () => {
             "trip_date": (new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()
         });
 
-        console.log(trip_data)
+        // console.log(trip_data)
         
         let config = {
             method: 'post',
@@ -100,7 +100,7 @@ const Passenger_View_1 = () => {
 
         axios.request(config)
             .then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
                 if(response.data.response == "trip added"){
                     setSubmitted_trip_data(response.data.rider_data)
                     document.getElementById("submit_ride_detail_btn").innerHTML = "Submit"
@@ -146,7 +146,7 @@ const Passenger_View_1 = () => {
                 onSubmit={sweet_alert}>
                 
                 <div className="row mt-5 justify-content-center">
-                    <h1 className='text-center'><b>Want ride on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1>
+                    <h1 className='text-center'><b>Want a trip on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1>
                     <div className="col-sm-6 mt-5">
                         <label className="form-label"> <b>*Full Name : </b> </label>
                         <input type="text" id='full_name' className="form-control border-5" required />
@@ -163,7 +163,7 @@ const Passenger_View_1 = () => {
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Pickup city : </b> </label>
-                    <input type="text" id='pickup_city' minLength={"3"} className="form-control border-5" required />
+                    <input type="text" id='pickup_city' minLength={"3"} placeholder='Toronto' className="form-control border-5" required />
                     </div>
                 </div>
 
@@ -207,15 +207,15 @@ const Passenger_View_1 = () => {
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Drop city : </b> </label>
-                    <input type="text" id='drop_city' minLength={"3"} className="form-control border-5" required />
+                    <input type="text" id='drop_city' minLength={"3"} placeholder='Kitchener' className="form-control border-5" required />
                     </div>
                 </div>
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
-                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : 10 digits WhatsApp number with country code (e.g. +15483333597)) 
+                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : only 10 digits Canadian WhatsApp number (e.g. 5483333597)) 
                     </label>
-                    <input type="text" pattern="[1-9]{1}[0-9]{9}" className="form-control border-5" id='phone_no'  required />
+                    <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required />
                     </div>
                 </div>
                 
@@ -300,7 +300,7 @@ const Passenger_View_1 = () => {
                 <div className="row mt-5 justify-content-center">
                     <div className="col-12">
                     <center>
-                        <button type="submit" id='submit_ride_detail_btn' className='btn btn-success'>Submit</button>
+                        <button type="submit" id='submit_ride_detail_btn' className='btn btn-success'>Submit Trip</button>
                     </center>
                     </div>
                 </div>

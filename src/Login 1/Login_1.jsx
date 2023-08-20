@@ -96,18 +96,18 @@ const Login_1 = () => {
             placement={popover_placement}
             overlay={
               <Popover id={`popover-positioned-${popover_placement}`}>
-                <Popover.Header as="h3" style={{"background":"black","color":"white"}}>{`format : WhatsApp Number # code e.g. +15483333597#a1b2c3`}</Popover.Header>
+                <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`format : WhatsApp no#code ( e.g. +15483333597#a1b2c3 )`}</Popover.Header>
                 {/* <Popover.Body style={{"background":"black","color":"white"}}>
                   <p>{popover_bodyText}</p>
                 </Popover.Body> */}
               </Popover>
             }
           >
-            <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"white","margin":"5px","cursor":"pointer"}}>?</b>
+            <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"yellow","margin":"5px","cursor":"pointer"}}>?</b>
           </OverlayTrigger>
       </>
     );
-}
+  }
 
   let rider_guest_login = () => {
     window.location.replace("/passenger_list")
@@ -143,8 +143,8 @@ const Login_1 = () => {
                         {/* <button type="submit" id='login_btn' className='btn btn-success'>Login</button>  */}
 
                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="submit" id='login_btn' class="btn btn-success">Login</button>
-                            <button type="button" onClick={rider_guest_login} class="btn btn-secondary text-dark">Guest Login</button>
+                            <button type="submit" id='login_btn' class="btn btn-success text-dark">Login</button>
+                            <button type="button" onClick={rider_guest_login} class="btn btn-secondary">Skip</button>
                         </div>
 
                     {/* </Link> */}

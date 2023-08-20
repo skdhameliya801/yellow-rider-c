@@ -12,7 +12,7 @@ const All_Passengers_List_1 = () => {
 
     useEffect(() => {
         // setN(N+10)
-        console.log("first use effect", N)
+        // console.log("first use effect", N)
         let rider_data_str = localStorage.getItem("l_r_d")
         let rider_data_obj = JSON.parse(rider_data_str)
         document.getElementById("no_trip_found").style.display = "none"
@@ -84,7 +84,7 @@ const All_Passengers_List_1 = () => {
     }, [])
 
     useEffect(() => {
-        console.log("second use effect",N)
+        // console.log("second use effect",N)
         document.getElementById("no_trip_found").style.display = "none"
 
         let rider_data_str = localStorage.getItem("l_r_d")
@@ -167,7 +167,7 @@ const All_Passengers_List_1 = () => {
             trips_data.length = 0;
             setTrips_data([])
             
-            console.log(trips_data,N)
+            // console.log(trips_data,N)
 
             let rider_data_str = localStorage.getItem("l_r_d")
             let rider_data_obj = JSON.parse(rider_data_str)
@@ -244,7 +244,7 @@ const All_Passengers_List_1 = () => {
     
 
     let call_trip_data_api = () => {
-        console.log("call_trip_data_api-------",N)
+        // console.log("call_trip_data_api-------",N)
         if(N >= 0){
             let d = new Date();
             let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
@@ -304,7 +304,7 @@ const All_Passengers_List_1 = () => {
         // console.log("1-find_more---", N)
         document.getElementById("loadMoreBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
         setN(N+10)
-        console.log("find_more",N)
+        // console.log("find_more",N)
         // console.log("2-find_more---", N)
 
     }
@@ -312,7 +312,7 @@ const All_Passengers_List_1 = () => {
     let choose_btn = () => {
         // setTrips_data([])
         // setN(0)
-        console.log("choose_btn",N)
+        // console.log("choose_btn",N)
         document.getElementById("no_trip_found").style.display = "block"
         document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
     }

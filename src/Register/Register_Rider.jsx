@@ -19,7 +19,7 @@ const Register_Rider = () => {
     // console.log(random_str + hexcolor1)
 
     let rider_register = () => {
-        console.log("Rider Register")
+        // console.log("Rider Register")
     }
 
     const handleChange = (event) => {
@@ -53,7 +53,7 @@ const Register_Rider = () => {
         axios.request(config)
         .then((response) => {
             document.getElementById("response").innerHTML = response.data.message;
-            console.log(response.data)
+            // console.log(response.data)
             // alert(response.data);
         })
         .catch((error) => {
