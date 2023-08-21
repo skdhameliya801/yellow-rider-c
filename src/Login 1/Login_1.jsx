@@ -143,8 +143,8 @@ const Login_1 = () => {
                         {/* <button type="submit" id='login_btn' className='btn btn-success'>Login</button>  */}
 
                         <div class="btn-group mr-2" role="group" aria-label="First group">
-                            <button type="submit" id='login_btn' class="btn btn-success text-dark">Login</button>
-                            <button type="button" onClick={rider_guest_login} class="btn btn-secondary">Skip</button>
+                            <button type="submit" id='login_btn' class="btn btn-success text-dark" style={{"display":"none"}}>Login</button>
+                            <button type="button" onClick={rider_guest_login} class="btn btn-success">Skip login</button>
                         </div>
 
                     {/* </Link> */}
