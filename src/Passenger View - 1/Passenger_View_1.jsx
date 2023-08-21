@@ -37,6 +37,11 @@ const Passenger_View_1 = () => {
         );
     }
 
+    let test_trip_date = () => {
+        let trip_date = document.getElementById("trip_date").value;
+        console.log(trip_date);
+    }
+
     let sweet_alert = (event) => {
         event.preventDefault();
 
@@ -60,6 +65,7 @@ const Passenger_View_1 = () => {
         
         document.getElementById("submit_ride_detail_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
+        let trip_date = document.getElementById("trip_date").value;
         let full_name = document.getElementById("full_name").value.trim()
         let full_pickup_address = document.getElementById("full_pickup_address").value.trim()
         let pickup_city = document.getElementById("pickup_city").value.toUpperCase().trim()
@@ -75,6 +81,7 @@ const Passenger_View_1 = () => {
         // let arrive_by_am_pm = document.getElementById("arrive_by_am_pm").value
 
         let trip_data = JSON.stringify({
+            trip_date,
             full_name,
             full_pickup_address,
             // pickup_landmark,
@@ -83,7 +90,7 @@ const Passenger_View_1 = () => {
             arrive_by_time,
             pickup_city,
             drop_city,
-            "trip_date": (new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()
+            // "trip_date": (new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()
         });
 
         // console.log(trip_data)
@@ -145,9 +152,19 @@ const Passenger_View_1 = () => {
                 method='POST'
                 onSubmit={sweet_alert}>
                 
+                {/* <h1 className='text-center'><b>Want a trip on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1> */}
+                <h1 className='text-center'><b>Want a trip? </b> </h1>
+                
                 <div className="row mt-5 justify-content-center">
-                    <h1 className='text-center'><b>Want a trip on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1>
-                    <div className="col-sm-6 mt-5">
+                    <div className="col-sm-6">
+                    <label className="form-label"> <b>*Choose Trip Date : </b> </label>
+                    <input type="date" id='trip_date' className="form-control border-5" required />
+                    </div>
+                </div>
+
+                <div className="row mt-5 justify-content-center">
+                    
+                    <div className="col-sm-6">
                         <label className="form-label"> <b>*Full Name : </b> </label>
                         <input type="text" id='full_name' className="form-control border-5" required />
                     </div>

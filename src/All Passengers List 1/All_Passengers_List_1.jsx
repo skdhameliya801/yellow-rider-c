@@ -9,6 +9,8 @@ const All_Passengers_List_1 = () => {
     let [N, setN] = useState(0)
     let [trips_data, setTrips_data] = useState([])
     const [user_in_session, setUser_in_session] = useState("g")
+    const [trip_date_1, setTrip_date_1] = useState("Chosen Date")
+
 
     useEffect(() => {
         // setN(N+10)
@@ -247,7 +249,8 @@ const All_Passengers_List_1 = () => {
         // console.log("call_trip_data_api-------",N)
         if(N >= 0){
             let d = new Date();
-            let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
+            // let current_date_str = (d.getFullYear() +"-"+ (d.getMonth()+1) +"-"+ d.getDate()).toString()
+            let current_date_str = trip_date_1
 
                         let data = JSON.stringify({
                             start_n : N,
@@ -317,12 +320,20 @@ const All_Passengers_List_1 = () => {
         document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
     }
 
+    let test_trip_date = () => {
+        let trip_date = document.getElementById("trip_date").value;
+        console.log(trip_date);
+        setTrip_date_1(trip_date)
+        console.log(trip_date_1)
+    }
+
     return (
     
     <>
     {/* {is_rider_online &&  <p>user's whatsapp number</p> } */}
 
-    <h5 class="text-center mt-5" >Trips on {(new Date().getFullYear() +"-"+ (new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()}</h5>
+    {/* <h5 class="text-center mt-5" >Trips on {(new Date().getFullYear() +"-"+ (new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()}</h5> */}
+    <h5 class="text-center mt-5" >Trips on {trip_date_1}</h5>
     
     
 
@@ -330,7 +341,8 @@ const All_Passengers_List_1 = () => {
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Find Passengers on {(new Date().getFullYear() +"-"+ (new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()}</h5>
+            {/* <h5 class="offcanvas-title" id="offcanvasBottomLabel">Find Passengers on {(new Date().getFullYear() +"-"+ (new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()}</h5> */}
+            <h5 class="offcanvas-title" id="offcanvasBottomLabel">Find Passengers on {trip_date_1}</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
                     <div class="offcanvas-body small">
@@ -342,6 +354,10 @@ const All_Passengers_List_1 = () => {
                                                 <label for="inputEmail4" class="form-label">Pickup City : </label>
                                                 <input type="text" class="form-control" id="trip_date" disabled/>
                                             </div> */}
+                                            <div class="col-12">
+                                                <label for="inputEmail4" class="form-label">*Trip date : </label>
+                                                <input type="date" onChange={test_trip_date} class="form-control bg-warning" id="trip_date"  required />
+                                            </div>
                                             <div class="col-12">
                                                 <label for="inputEmail4" class="form-label">*Pickup City : </label>
                                                 <input type="text" class="form-control bg-warning" id="pickup_city" placeholder='enter pickup city' required />

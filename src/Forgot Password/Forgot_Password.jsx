@@ -83,12 +83,12 @@ const Forgot_Password = () => {
 
   return (
     <div className="container">
-        <h1 className="text-center mt-5">{CONSTANTS.app_name} - Forgot Password </h1>
+        {/* <h1 className="text-center mt-5">{CONSTANTS.app_name} - Forgot Password </h1> */}
         <div className="row">
             <div className="col">
                 <div className="d-flex justify-content-center align-items-center" style={{"height":"100vh"}}>
                     <form onSubmit={form_forgot_pass_submit} className='border border-primary bg-light rounded-5 p-5 '>
-                        <h1 className="text-center">Forgot Password</h1>
+                        <h1 className="text-center">{CONSTANTS.app_name} - Forgot Password </h1>
                         <p className="text-center bg-danger p-2 text-white" id='response_message'></p>
                         <div className="m-3">
                             <label className="form-label">Username { PopoverPositionedExample("top", "( Country / State / City )")} </label>
