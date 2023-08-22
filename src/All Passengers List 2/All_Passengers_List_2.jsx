@@ -127,7 +127,7 @@ const All_Passengers_List_2 = () => {
                 }
                 </Row>
                 <center>
-                    <Button id='loadMoreBtn' className='mb-5' variant="success" onClick={()=>setN(N+2)}>
+                    <Button id='loadMoreBtn' className='mb-5' variant="success" onClick={()=>setN(N+10)}>
                         Find More
                     </Button>
                 </center>
