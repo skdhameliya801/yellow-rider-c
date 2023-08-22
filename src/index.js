@@ -11,6 +11,8 @@ import Passenger_View_1 from './Passenger View - 1/Passenger_View_1';
 import All_Passengers_List_1 from './All Passengers List 1/All_Passengers_List_1';
 import Login_1 from './Login 1/Login_1';
 import Register_Rider from './Register/Register_Rider';
+import All_Passengers_List_2 from './All Passengers List 2/All_Passengers_List_2';
+import Search_Form from './Search Form/Search_Form';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +22,8 @@ root.render(
       <Route exact path="/" element={<App />} />
       <Route exact path="/login" element={<Login_1 />} />
       <Route exact path="/passenger_list" element={<All_Passengers_List_1 />} />
+      <Route exact path="/choose" element={<Search_Form />} />
+      <Route exact path="/trips/:pickup_city/:drop_city/:trip_date" element={<All_Passengers_List_2 />} />
       <Route exact path="/passenger_form" element={<Passenger_View_1 />} />
       {/* <Route exact path="/choose_start_end_cities" element={<Passenger_View_1 />} /> */}
       <Route exact path="/forgot_password" element={<Forgot_Password />} />

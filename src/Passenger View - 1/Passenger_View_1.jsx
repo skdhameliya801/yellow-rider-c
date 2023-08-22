@@ -66,6 +66,7 @@ const Passenger_View_1 = () => {
         document.getElementById("submit_ride_detail_btn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
         let trip_date = document.getElementById("trip_date").value;
+        let req_fare = document.getElementById("req_fare").value.trim().toUpperCase();
         let full_name = document.getElementById("full_name").value.trim()
         let full_pickup_address = document.getElementById("full_pickup_address").value.trim()
         let pickup_city = document.getElementById("pickup_city").value.toUpperCase().trim()
@@ -82,6 +83,7 @@ const Passenger_View_1 = () => {
 
         let trip_data = JSON.stringify({
             trip_date,
+            req_fare,
             full_name,
             full_pickup_address,
             // pickup_landmark,
@@ -141,6 +143,7 @@ const Passenger_View_1 = () => {
                         <p><b>Drop Address :</b> {submitted_trip_data.full_drop_address}, {submitted_trip_data.drop_city}</p>
                         <p><b>Arrive by Time :</b> {submitted_trip_data.arrive_by_time}</p>
                         <p><b>Phone No :</b> {submitted_trip_data.phone_no}</p>
+                        <p><b>Requested Fare :</b> {submitted_trip_data.req_fare}</p>
                         <p><b>Trip Date :</b> {submitted_trip_data.trip_date}</p>
                         <h3 className='mt-5'>Thank You..!, {submitted_trip_data.full_name}</h3>
                     </div>
@@ -159,6 +162,13 @@ const Passenger_View_1 = () => {
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Choose Trip Date : </b> </label>
                     <input type="date" id='trip_date' className="form-control border-5" required />
+                    </div>
+                </div>
+
+                <div className="row mt-5 justify-content-center">
+                    <div className="col-sm-6">
+                    <label className="form-label"> <b>*How much fare you want to give? : </b> </label>
+                    <input type="text" id='req_fare' className="form-control border-5" placeholder='15 CAD' required />
                     </div>
                 </div>
 

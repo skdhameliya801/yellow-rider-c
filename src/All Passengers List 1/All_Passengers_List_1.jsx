@@ -316,8 +316,8 @@ const All_Passengers_List_1 = () => {
         // setTrips_data([])
         // setN(0)
         // console.log("choose_btn",N)
-        document.getElementById("no_trip_found").style.display = "block"
-        document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
+        // document.getElementById("no_trip_found").style.display = "block"
+        // document.getElementById("no_trip_found").innerHTML = "Right now no more trip is found. Please check after sometime."
     }
 
     let test_trip_date = () => {

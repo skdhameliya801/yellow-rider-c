@@ -6,7 +6,7 @@ import "./Trip_Card.css"
 const Trip_Card = (props) => {
   return (
     <>
-        <div class="card" style={{"background":"white", "overflow":"auto","width":"100%","height":"43vh"}}>
+        <div class="card scrollbar-custom" style={{"background":"white", "overflow":"auto","width":"100%","height":"43vh"}}>
             <div class="card-body">
                 {/* <h5 class="card-title">Card title</h5> */}
                 {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
@@ -40,6 +40,8 @@ const Trip_Card = (props) => {
                     </div>
                 </div>
                 
+                <p><b>Requested Fare : </b>{props.each_trip.req_fare}</p>
+                
                 {/* <Whatsapp_Button user_in_session={props.user_in_session} /> */}
                 {/* <button class="button"><i class="fas fa-user"></i> Button 1</button> */}
 
@@ -48,7 +50,7 @@ const Trip_Card = (props) => {
                     // ? <Link to={`https://wa.me/5483333597?text= *Hi, I am a rider and want to subscribe.*`}> <button class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"> Subscribe </i> </button> </Link>  
                     // : <a type='button' href={`https://wa.me/${props.each_trip?.phone_no}?text= *Hi ${props.each_trip?.full_name}*, %0A *Pickup Address :* ${props.each_trip?.full_pickup_address}, ${props.each_trip?.pickup_city}, %0A *Drop Address :* ${props.each_trip?.full_drop_address}, ${props.each_trip?.drop_city}, %0A *Arrive by Time :* ${props.each_trip?.arrive_by_time}, %0A *Trip Date :* ${props.each_trip?.trip_date}, %0A %0A *You are looking for rider for this trip, Right?*`} target='_blank' className='btn btn-success'><i class="fa fa-whatsapp" aria-hidden="true">Chat on {props.each_trip?.phone_no}</i></a>
                 }
-                <a type='button' href={`https://wa.me/${props.each_trip?.phone_no}?text= *Hi ${props.each_trip?.full_name}*, %0A *Pickup Address :* ${props.each_trip?.full_pickup_address}, ${props.each_trip?.pickup_city}, %0A *Drop Address :* ${props.each_trip?.full_drop_address}, ${props.each_trip?.drop_city}, %0A *Arrive by Time :* ${props.each_trip?.arrive_by_time}, %0A *Trip Date :* ${props.each_trip?.trip_date}, %0A %0A *You are looking for rider for this trip, Right?*`} target='_blank' className='btn btn-success'><i class="fa fa-whatsapp" aria-hidden="true"> Chat on {props.each_trip?.phone_no}</i></a>
+                <a type='button' href={`https://wa.me/${props.each_trip?.phone_no}?text= *https://yellow-trip.com* %0A%0A *Hi ${props.each_trip?.full_name}*, %0A *Pickup Address :* ${props.each_trip?.full_pickup_address}, ${props.each_trip?.pickup_city}, %0A *Drop Address :* ${props.each_trip?.full_drop_address}, ${props.each_trip?.drop_city}, %0A *Arrive by Time :* ${props.each_trip?.arrive_by_time}, %0A *Trip Date :* ${props.each_trip?.trip_date}, %0A *Requested fare by you :* ${props.each_trip?.req_fare} %0A %0A *You are looking for rider for this trip, Right?*`} target='_blank' className='btn btn-success'><i class="fa fa-whatsapp" aria-hidden="true"> Chat on {props.each_trip?.phone_no}</i></a>
 
                     
                 
