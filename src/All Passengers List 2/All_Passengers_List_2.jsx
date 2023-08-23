@@ -23,7 +23,7 @@ const All_Passengers_List_2 = () => {
     const [N, setN] = useState(0)
 
     useEffect(() => {
-        // document.getElementById("loadMoreBtn").innerText = "Please Wait"
+        document.getElementById("loadMoreBtn").innerHTML = `<div class="spinner-border text-warning" role="status"><span class="visually-hidden">Loading...</span></div>`
         // console.log("use effect",N);
         if(pickup_city || drop_city || trip_date){
             let data = JSON.stringify({
