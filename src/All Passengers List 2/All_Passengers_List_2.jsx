@@ -17,6 +17,18 @@ const All_Passengers_List_2 = () => {
     let pickup_city = urlParams.pickup_city.toUpperCase()
     let drop_city = urlParams.drop_city.toUpperCase()
     let trip_date = urlParams.trip_date
+
+    if(trip_date == 'a'){
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth() + 1; // Adding 1 to convert zero-based index to actual month
+        const twoDigitMonth = currentMonth.toString().padStart(2, '0');
+
+        // console.log(twoDigitMonth); // This will output the current month as a two-digit number (e.g., "08" for August)
+
+        trip_date = currentDate.getFullYear() +"-"+ twoDigitMonth +"-"+ currentDate.getDate();
+        console.log(trip_date)
+
+    }
     // console.log(pickup_city,drop_city,trip_date)
 
     const [All_filtered_Trips, setAll_filtered_Trips] = useState([])
@@ -97,7 +109,7 @@ const All_Passengers_List_2 = () => {
                         <b>{CONSTANTS.client_url}</b>
                     </Link>
                 </marquee>
-                {pickup_city != "A"? <h1 className="text-center mt-3">Trips From <u>{pickup_city}</u> to <u>{drop_city}</u> on <u>{trip_date}</u></h1> : ""}
+                <h1 className="text-center mt-3">Trips From <u>{pickup_city}</u> to <u>{drop_city}</u> on <u>{trip_date}</u></h1>
                 <Row className='d-flex justify-content-around mb-5'>
                 {
                     All_filtered_Trips.map((each_trip, id1) => {

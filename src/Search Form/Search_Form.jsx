@@ -20,6 +20,8 @@ export default function Search_Form() {
       ...prevProps,
       [name]: value
     }));
+
+    console.log(FilterBy)
   };
 
   function PopoverPositionedExample(popover_placement, popover_bodyText) {
@@ -64,7 +66,7 @@ export default function Search_Form() {
                 <input type="date" class="form-control bg-warning" placeholder="enter trip date" onChange={handleInputChange} name="trip_date" value={FilterBy.trip_date} required />
             </div>
             <div className="m-3">
-                <Link to={`/trips/${FilterBy.pickup_city || 'a'}/${FilterBy.drop_city || 'a'}/${FilterBy.trip_date || '2023-08-20'}`}>
+                <Link to={`/trips/${FilterBy.pickup_city || 'a'}/${FilterBy.drop_city || 'a'}/${FilterBy.trip_date || 'a'}`}>
                     <button type="submit" class="btn btn-success">Find Trips</button>
                 </Link>
             </div>
