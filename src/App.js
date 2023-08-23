@@ -5,6 +5,8 @@ import { CONSTANTS } from './CONSTANTS';
 
 function App() {
 
+  console.log("1")
+  
   // let i_am_rider = () => {
   //   let rider_data = JSON.parse(localStorage.getItem("l_r_d"))
 
