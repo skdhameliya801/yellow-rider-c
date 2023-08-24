@@ -14,30 +14,32 @@ const All_Passengers_List_2 = () => {
     
     const urlParams = useParams()
     // console.log(urlParams)
-    let pickup_city = urlParams.pickup_city.toUpperCase()
-    let drop_city = urlParams.drop_city.toUpperCase()
+    let pickup_city = urlParams.pickup_city?.toUpperCase()
+    let drop_city = urlParams.drop_city?.toUpperCase()
     let trip_date = urlParams.trip_date
 
-    if(trip_date == 'a'){
-        const currentDate = new Date();
-        const currentMonth = currentDate.getMonth() + 1; // Adding 1 to convert zero-based index to actual month
-        const twoDigitMonth = currentMonth.toString().padStart(2, '0');
+    // if(trip_date == ''){
+    //     const currentDate = new Date();
+    //     const currentMonth = currentDate.getMonth() + 1; // Adding 1 to convert zero-based index to actual month
+    //     const twoDigitMonth = currentMonth.toString().padStart(2, '0');
 
-        // console.log(twoDigitMonth); // This will output the current month as a two-digit number (e.g., "08" for August)
+    //     // console.log(twoDigitMonth); // This will output the current month as a two-digit number (e.g., "08" for August)
 
-        trip_date = currentDate.getFullYear() +"-"+ twoDigitMonth +"-"+ currentDate.getDate();
-        console.log(trip_date)
+    //     trip_date = currentDate.getFullYear() +"-"+ twoDigitMonth +"-"+ currentDate.getDate();
+    //     console.log(trip_date)
 
-    }
+    // }
     // console.log(pickup_city,drop_city,trip_date)
 
     const [All_filtered_Trips, setAll_filtered_Trips] = useState([])
     const [N, setN] = useState(0)
 
     useEffect(() => {
+        document.getElementById("trip_title").innerText = "Available Yellow Trips"
+
         document.getElementById("loadMoreBtn").innerHTML = `<div class="spinner-border text-warning" role="status"><span class="visually-hidden">Loading...</span></div>`
         // console.log("use effect",N);
-        if(pickup_city || drop_city || trip_date){
+        // if(pickup_city || drop_city || trip_date){
             let data = JSON.stringify({
                 "start_n": N,
                 "pickup_city": pickup_city,
@@ -94,10 +96,45 @@ const All_Passengers_List_2 = () => {
                 .catch((error) => {
                     console.log(error);
                 });
-        }
-        else{
+        // }
+        // else{
             // console.log("else use effect")
-        }
+            // document.getElementById("trip_title").innerText = "Available Trips"
+            // console.log(urlParams)
+/*            let data = JSON.stringify({
+                "start_n": N,
+                "pickup_city": pickup_city,
+                "drop_city": drop_city,
+                "trip_date": trip_date
+            });
+    
+            let config = {
+                method: 'post',
+                maxBodyLength: Infinity,
+                url: CONSTANTS.server_url + '/get_filtered_trips_data_2',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                data : data
+            };
+
+                axios.request(config)
+                .then((response) => {
+                    document.getElementById("loadMoreBtn").innerHTML = "Find more";
+                    if(response.data.length != 0){
+                        document.getElementById("loadMoreBtn").style.display = "block"
+                        setAll_filtered_Trips([...All_filtered_Trips, ...response.data]);
+                    }
+                    else{
+                        document.getElementById("loadMoreBtn").innerText = "That's all, Dear Rider..!"
+                        document.getElementById("loadMoreBtn").disabled = true
+                        console.log("that's it",N)
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }*/
         
     }, [N])
 
@@ -109,7 +146,7 @@ const All_Passengers_List_2 = () => {
                         <b>{CONSTANTS.client_url}</b>
                     </Link>
                 </marquee>
-                <h1 className="text-center mt-3">Trips From <u>{pickup_city}</u> to <u>{drop_city}</u> on <u>{trip_date}</u></h1>
+                <h1 className="text-center mt-3" id='trip_title'>Trips From <u>{pickup_city}</u> to <u>{drop_city}</u> on <u>{trip_date}</u></h1>
                 <Row className='d-flex justify-content-around mb-5'>
                 {
                     All_filtered_Trips.map((each_trip, id1) => {

@@ -23,7 +23,16 @@ root.render(
       <Route exact path="/login" element={<Login_1 />} />
       <Route exact path="/passenger_list" element={<All_Passengers_List_1 />} />
       <Route exact path="/choose" element={<Search_Form />} />
+      
       <Route exact path="/trips/:pickup_city/:drop_city/:trip_date" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips/:pickup_city//" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips//:drop_city/" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips///:trip_date" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips/:pickup_city/:drop_city/" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips/:pickup_city//:trip_date" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips//:drop_city/:trip_date" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips///" element={<All_Passengers_List_2 />} />
+      
       <Route exact path="/passenger_form" element={<Passenger_View_1 />} />
       {/* <Route exact path="/choose_start_end_cities" element={<Passenger_View_1 />} /> */}
       <Route exact path="/forgot_password" element={<Forgot_Password />} />

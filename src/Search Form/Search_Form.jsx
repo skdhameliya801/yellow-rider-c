@@ -66,7 +66,7 @@ export default function Search_Form() {
                 <input type="date" class="form-control bg-warning" placeholder="enter trip date" onChange={handleInputChange} name="trip_date" value={FilterBy.trip_date} required />
             </div>
             <div className="m-3">
-                <Link to={`/trips/${FilterBy.pickup_city || 'a'}/${FilterBy.drop_city || 'a'}/${FilterBy.trip_date || 'a'}`}>
+                <Link to={`/trips/${FilterBy.pickup_city}/${FilterBy.drop_city}/${FilterBy.trip_date}`}>
                     <button type="submit" class="btn btn-success">Find Trips</button>
                 </Link>
             </div>
