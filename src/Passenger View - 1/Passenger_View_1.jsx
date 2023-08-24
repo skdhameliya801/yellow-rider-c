@@ -240,9 +240,10 @@ const Passenger_View_1 = () => {
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
-                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : only 10 digits Canadian WhatsApp number (e.g. 5483333597)) 
+                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : WhatsApp number with country code (e.g. +15483333597)) 
                     </label>
-                    <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required />
+                    {/* <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required /> */}
+                    <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" className="form-control border-5" id='phone_no'  required />
                     </div>
                 </div>
                 
