@@ -132,11 +132,11 @@ const Login_1 = () => {
 
                 <div className="m-3">
                     <label className="form-label">Username { PopoverPositionedExample("top", "( Country / State / City )")} </label>
-                    <input type="text" className="form-control bg-warning" id="whatsapp_no" placeholder="enter username" required />
+                    <input type="text" className="form-control bgMajorColor" id="whatsapp_no" placeholder="enter username" required />
                 </div>
                 <div className="m-3">
                     <label className="form-label">Password</label>
-                    <input type="password" className="form-control bg-warning" id="password" placeholder="enter password" required />
+                    <input type="password" className="form-control bgMajorColor" id="password" placeholder="enter password" required />
                 </div>
                 <div className="m-3">
                     {/* <Link to={'/rider_info'}> */}

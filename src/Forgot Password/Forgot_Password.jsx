@@ -92,20 +92,20 @@ const Forgot_Password = () => {
                         <p className="text-center bg-danger p-2 text-white" id='response_message'></p>
                         <div className="m-3">
                             <label className="form-label">Username { PopoverPositionedExample("top", "( Country / State / City )")} </label>
-                            <input type="number" className="form-control bg-warning" id="whatsapp_no" placeholder="enter username" required />
+                            <input type="number" className="form-control bgMajorColor" id="whatsapp_no" placeholder="enter username" required />
                         </div>
                         <div className="m-3">
                             <label for="formGroupExampleInput" className="form-label">Write your security code</label>
-                            <input type="text" className="form-control bg-warning" id="security_code" placeholder="enter security code" required />
+                            <input type="text" className="form-control bgMajorColor" id="security_code" placeholder="enter security code" required />
                             <b>forgot? <a href="https://wa.me/+15483333597?text=Hi, I forgot my security code." target='_blank'>click here to chat with us</a></b>
                         </div>
                         <div className="m-3">
                             <label for="formGroupExampleInput" className="form-label">Password</label>
-                            <input type="password" className="form-control bg-warning" id="password" placeholder="enter password" required />
+                            <input type="password" className="form-control bgMajorColor" id="password" placeholder="enter password" required />
                         </div>
                         <div className="m-3">
                             <label for="formGroupExampleInput" className="form-label">Confirm password</label>
-                            <input type="password" className="form-control bg-warning" id="confirm_password" placeholder="enter confirm password" required />
+                            <input type="password" className="form-control bgMajorColor" id="confirm_password" placeholder="enter confirm password" required />
                         </div>
                         {/* <div className="m-3">
                             <label for="inputState" className="form-label">Select security question</label>
@@ -129,7 +129,7 @@ const Forgot_Password = () => {
                         </div> */}
                         {/* <div className="m-3">
                             <label for="formGroupExampleInput2" className="form-label">Write your answer</label>
-                            <input type="text" className="form-control bg-warning" id="formGroupExampleInput2" placeholder="" />
+                            <input type="text" className="form-control bgMajorColor" id="formGroupExampleInput2" placeholder="" />
                         </div> */}
                         <div className="m-3">
                             <button type="submit" id='set_new_pass_btn' className='btn btn-success'>Set New Password</button>

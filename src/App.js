@@ -5,7 +5,7 @@ import { CONSTANTS } from './CONSTANTS';
 
 function App() {
 
-  console.log("2")
+  console.log("3")
   
   // let i_am_rider = () => {
   //   let rider_data = JSON.parse(localStorage.getItem("l_r_d"))
@@ -56,7 +56,7 @@ function App() {
         </div>
       </div> */}
 
-<div className="d-flex flex-column vh-100 bg-warning">
+<div className="d-flex flex-column vh-100">
       <header className="p-3">
         {/* Header content */}
         <h1 className='text-center mt-5'>Welcome to <b>{CONSTANTS.app_name}</b></h1>
@@ -77,7 +77,8 @@ function App() {
               </div>
               <div className="col-12 mt-5">
                 
-                <Link to={"/login"} className='text-black' style={{"textDecoration":"none"}}>
+                {/* <Link to={"/login"} className='text-black' style={{"textDecoration":"none"}}> */}
+                <Link to={"/choose"} className='text-black' style={{"textDecoration":"none"}}>
                     <div className='rider_div bg-success p-5 rounded-5'>
                       <h5>I am Rider</h5>
                     </div>
@@ -99,7 +100,7 @@ function App() {
           
         </div>
       </main>
-      <footer className="bg-warning p-3 mb-5">
+      <footer className="p-3 mb-5">
         {/* Footer content */}
         <h4 className='text-center'>Have a nice ride...!</h4>
       </footer>

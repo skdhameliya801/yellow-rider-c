@@ -55,19 +55,23 @@ export default function Search_Form() {
 
             <div className="m-3">
                 <label className="form-label">Pickup City</label>
-                <input type="text" class="form-control bg-warning" placeholder="enter pickup city" onChange={handleInputChange} name="pickup_city" value={FilterBy.pickup_city} />
+                <input type="text" class="form-control bgMajorColor" placeholder="enter pickup city" onChange={handleInputChange} name="pickup_city" value={FilterBy.pickup_city} />
             </div>
             <div className="m-3">
                 <label className="form-label">Drop City</label>
-                <input type="text" class="form-control bg-warning" placeholder="enter drop city" onChange={handleInputChange} name="drop_city" value={FilterBy.drop_city} />
+                <input type="text" class="form-control bgMajorColor" placeholder="enter drop city" onChange={handleInputChange} name="drop_city" value={FilterBy.drop_city} />
             </div>
             <div className="m-3">
                 <label className="form-label">Trip Date</label>
-                <input type="date" class="form-control bg-warning" placeholder="enter trip date" onChange={handleInputChange} name="trip_date" value={FilterBy.trip_date} required />
+                <input type="date" class="form-control bgMajorColor" placeholder="enter trip date" onChange={handleInputChange} name="trip_date" value={FilterBy.trip_date} required />
             </div>
             <div className="m-3">
                 <Link to={`/trips/${FilterBy.pickup_city}/${FilterBy.drop_city}/${FilterBy.trip_date}`}>
                     <button type="submit" class="btn btn-success">Find Trips</button>
+                </Link>
+                <br /><b>or</b> <br />
+                <Link to={`/trips///`}>
+                    <button type="submit" class="btn btn-success">Any Cities Trips</button>
                 </Link>
             </div>
         </form>
@@ -79,19 +83,19 @@ export default function Search_Form() {
                     <div className="row mt-5">
                         <div className="col-sm-12 col-lg-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text bg-warning" id="basic-addon1">Pickup City</span>
+                                <span class="input-group-text bgMajorColor" id="basic-addon1">Pickup City</span>
                                 <input type="text" class="form-control border-5 border-warning" placeholder="enter pickup city" onChange={handleInputChange} name="pickup_city" value={FilterBy.pickup_city} aria-label="Username" aria-describedby="basic-addon1" />
                             </div>
                         </div>
                         <div className="col-sm-12 col-lg-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text bg-warning" id="basic-addon1">Drop City</span>
+                                <span class="input-group-text bgMajorColor" id="basic-addon1">Drop City</span>
                                 <input type="text" class="form-control border-5 border-warning" placeholder="enter drop city" onChange={handleInputChange} name="drop_city" value={FilterBy.drop_city} aria-label="Username" aria-describedby="basic-addon1" />
                             </div>
                         </div>
                         <div className="col-sm-12 col-lg-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text bg-warning" id="basic-addon1">*Trip Date</span>
+                                <span class="input-group-text bgMajorColor" id="basic-addon1">*Trip Date</span>
                                 <input type="date" class="form-control border-5 border-warning" placeholder="enter trip date" onChange={handleInputChange} name="trip_date" value={FilterBy.trip_date} aria-label="Username" aria-describedby="basic-addon1" required />
                             </div>
                         </div>

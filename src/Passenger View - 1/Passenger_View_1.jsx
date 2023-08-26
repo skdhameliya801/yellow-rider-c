@@ -10,10 +10,10 @@ const Passenger_View_1 = () => {
     let [isLoader, setIsLoader] = useState(false)
     let [submitted_trip_data, setSubmitted_trip_data] = useState('')
 
-
-    // useEffect(() => {
-    //     document.getElementById("response_message").style.display = "none";
-    // }, [])
+    useEffect(() => {
+        document.getElementById("hint").click();
+        // document.getElementById("response_message").style.display = "none";
+    }, [])
 
     function PopoverPositionedExample(popover_placement, popover_bodyText) {
         return (
@@ -24,14 +24,14 @@ const Passenger_View_1 = () => {
                 placement={popover_placement}
                 overlay={
                   <Popover id={`popover-positioned-${popover_placement}`}>
-                    <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`Rider will contact you on this WhatsApp number`}</Popover.Header>
+                    <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`Rider will contact you on this WhatsApp number. So please give right WhatsApp no. with country code. (e.g. +15483333597)`}</Popover.Header>
                     {/* <Popover.Body style={{"background":"black","color":"white"}}>
                       <p>{popover_bodyText}</p>
                     </Popover.Body> */}
                   </Popover>
                 }
               >
-                <b style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"yellow","margin":"5px","cursor":"pointer"}}>?</b>
+                <b id='hint' style={{"border": "5px solid black", "borderRadius":"50%", "padding":"0px 5px", "background":"black","color":"yellow","margin":"5px","cursor":"pointer"}}>?</b>
               </OverlayTrigger>
           </>
         );
@@ -47,7 +47,7 @@ const Passenger_View_1 = () => {
 
         Swal.fire({
             title: 'Are you sure want to post this trip?',
-            text: "",
+            text: "Please provide the right WhatsApp no. So the rider can contact you on provided WhatsApp no.",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#198754',
@@ -240,10 +240,10 @@ const Passenger_View_1 = () => {
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
-                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("top", "( Country / State / City )")} </b> <br/> (Format : WhatsApp number with country code (e.g. +15483333597)) 
+                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("bottom", "( Country / State / City )")} </b> <br/> (Format : WhatsApp number with country code (e.g. +15483333597)) 
                     </label>
                     {/* <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required /> */}
-                    <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" className="form-control border-5" id='phone_no'  required />
+                    <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' className="form-control border-5 bg-warning" id='phone_no'  required />
                     </div>
                 </div>
                 
