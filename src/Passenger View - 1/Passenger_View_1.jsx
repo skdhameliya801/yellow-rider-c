@@ -9,11 +9,18 @@ const Passenger_View_1 = () => {
     let [submitted, setSubmitted] = useState(false)
     let [isLoader, setIsLoader] = useState(false)
     let [submitted_trip_data, setSubmitted_trip_data] = useState('')
+    const [input_phone_no, setInput_phone_no] = useState('');
+
 
     useEffect(() => {
-        document.getElementById("hint").click();
+        // document.getElementById("hint").click();
         // document.getElementById("response_message").style.display = "none";
     }, [])
+
+    const handle_phone_no_Change = (e) => {
+        setInput_phone_no(e.target.value);
+        // document.getElementById("entered_phone_no").innerText = input_phone_no;
+    };
 
     function PopoverPositionedExample(popover_placement, popover_bodyText) {
         return (
@@ -24,7 +31,7 @@ const Passenger_View_1 = () => {
                 placement={popover_placement}
                 overlay={
                   <Popover id={`popover-positioned-${popover_placement}`}>
-                    <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`Rider will contact you on this WhatsApp number. So please give right WhatsApp no. with country code. (e.g. +15483333597)`}</Popover.Header>
+                    <Popover.Header as="h3" style={{"background":"black","color":"yellow"}}>{`Rider will contact you on this WhatsApp number. So please give right WhatsApp no. with +1 country code. (e.g. +15483333597)`}</Popover.Header>
                     {/* <Popover.Body style={{"background":"black","color":"white"}}>
                       <p>{popover_bodyText}</p>
                     </Popover.Body> */}
@@ -47,7 +54,7 @@ const Passenger_View_1 = () => {
 
         Swal.fire({
             title: 'Are you sure want to post this trip?',
-            text: "Please provide the right WhatsApp no. So the rider can contact you on provided WhatsApp no.",
+            text: "Available rider will contact you on "+input_phone_no,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#198754',
@@ -80,6 +87,10 @@ const Passenger_View_1 = () => {
         // let arrive_by_HH = document.getElementById("arrive_by_HH").value
         // let arrive_by_MM = document.getElementById("arrive_by_MM").value
         // let arrive_by_am_pm = document.getElementById("arrive_by_am_pm").value
+
+        // phone_no = phone_no.replace(/[^0-9]/g, "");
+        // phone_no = "+1"+phone_no;
+        // console.log(phone_no)
 
         let trip_data = JSON.stringify({
             trip_date,
@@ -127,6 +138,21 @@ const Passenger_View_1 = () => {
             .catch((error) => {
                 console.log(error);
             });        
+    }
+
+    let check_phone_no = () => {
+        // console.log("check_phone_no")
+        let phone_no = document.getElementById("phone_no").value.trim()
+        phone_no = phone_no.replace(/[^0-9]/g, "");
+        
+        if(phone_no.startsWith("1")){
+            phone_no = "+"+phone_no;
+        }else{
+            phone_no = "+1"+phone_no;
+        }
+
+        setInput_phone_no(phone_no)
+        // alert(`Is ${phone_no} right WhatsApp No?`)
     }
 
     return (
@@ -240,10 +266,12 @@ const Passenger_View_1 = () => {
 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
-                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("bottom", "( Country / State / City )")} </b> <br/> (Format : WhatsApp number with country code (e.g. +15483333597)) 
+                    <label className="form-label"> <b>*WhatsApp No : { PopoverPositionedExample("bottom", "( Country / State / City )")} </b> <br/> (Format : WhatsApp number with +1 country code (e.g. +15483333597)) 
                     </label>
                     {/* <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required /> */}
-                    <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' className="form-control border-5 bg-warning" id='phone_no'  required />
+                    {/* <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onfocusout={(e) => check_phone_no(e.target.value)} className="form-control border-5 bg-warning" id='phone_no'  required /> */}
+                    <input type="number" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onBlur={check_phone_no} className="form-control border-5 bg-warning" id='phone_no'  required />
+                    {input_phone_no != ''? <span id='entered_phone_no'>Your number will be : {input_phone_no}</span>:'' }
                     </div>
                 </div>
                 

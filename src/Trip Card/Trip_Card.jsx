@@ -2,8 +2,20 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Whatsapp_Button from './Whatsapp_Button'
 import "./Trip_Card.css"
+import { CONSTANTS } from '../CONSTANTS'
 
 const Trip_Card = (props) => {
+
+    let phone_no = props.each_trip?.phone_no;
+    phone_no = phone_no.replace(/[^0-9]/g, "");
+    if(phone_no.startsWith("1")){
+        phone_no = "+"+phone_no;
+    }else{
+        phone_no = "+1"+phone_no;
+    }
+
+    // props.each_trip?.phone_no = phone_no
+
   return (
     <>
         <div class="card scrollbar-custom" style={{"background":"white", "overflow":"auto","width":"100%","height":"43vh"}}>
@@ -50,7 +62,7 @@ const Trip_Card = (props) => {
                     // ? <Link to={`https://wa.me/5483333597?text= *Hi, I am a rider and want to subscribe.*`}> <button class="btn btn-success"><i class="fa fa-whatsapp" aria-hidden="true"> Subscribe </i> </button> </Link>  
                     // : <a type='button' href={`https://wa.me/${props.each_trip?.phone_no}?text= *Hi ${props.each_trip?.full_name}*, %0A *Pickup Address :* ${props.each_trip?.full_pickup_address}, ${props.each_trip?.pickup_city}, %0A *Drop Address :* ${props.each_trip?.full_drop_address}, ${props.each_trip?.drop_city}, %0A *Arrive by Time :* ${props.each_trip?.arrive_by_time}, %0A *Trip Date :* ${props.each_trip?.trip_date}, %0A %0A *You are looking for rider for this trip, Right?*`} target='_blank' className='btn btn-success'><i class="fa fa-whatsapp" aria-hidden="true">Chat on {props.each_trip?.phone_no}</i></a>
                 }
-                <a type='button' href={`https://wa.me/${props.each_trip?.phone_no}?text= *https://yellow-trip.com* %0A%0A *Hi ${props.each_trip?.full_name}*, %0A *Pickup Address :* ${props.each_trip?.full_pickup_address}, ${props.each_trip?.pickup_city}, %0A *Drop Address :* ${props.each_trip?.full_drop_address}, ${props.each_trip?.drop_city}, %0A *Arrive by Time :* ${props.each_trip?.arrive_by_time}, %0A *Trip Date :* ${props.each_trip?.trip_date}, %0A *Requested fare by you :* ${props.each_trip?.req_fare} %0A %0A *You are looking for rider for this trip, Right?*`} target='_blank' className='btn btn-success'><i class="fa fa-whatsapp" aria-hidden="true"> Chat on {props.each_trip?.phone_no}</i></a>
+                <a type='button' href={`https://wa.me/${phone_no}?text= *${CONSTANTS.client_url}* %0A%0A *Hi ${props.each_trip?.full_name}*, %0A *Pickup Address :* ${props.each_trip?.full_pickup_address}, ${props.each_trip?.pickup_city}, %0A *Drop Address :* ${props.each_trip?.full_drop_address}, ${props.each_trip?.drop_city}, %0A *Arrive by Time :* ${props.each_trip?.arrive_by_time}, %0A *Trip Date :* ${props.each_trip?.trip_date}, %0A *Requested fare by you :* ${props.each_trip?.req_fare} %0A %0A *You are looking for rider for this trip, Right?*`} target='_blank' className='btn btn-success'><i class="fa fa-whatsapp" aria-hidden="true"> Chat on {phone_no}</i></a>
 
                     
                 
