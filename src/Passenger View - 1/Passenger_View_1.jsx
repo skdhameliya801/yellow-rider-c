@@ -9,7 +9,7 @@ const Passenger_View_1 = () => {
     let [submitted, setSubmitted] = useState(false)
     let [isLoader, setIsLoader] = useState(false)
     let [submitted_trip_data, setSubmitted_trip_data] = useState('')
-    const [input_phone_no, setInput_phone_no] = useState('');
+    const [input_phone_no, setInput_phone_no] = useState(false);
 
 
     useEffect(() => {
@@ -152,6 +152,7 @@ const Passenger_View_1 = () => {
         }
 
         setInput_phone_no(phone_no)
+        // console.log(input_phone_no)
         // alert(`Is ${phone_no} right WhatsApp No?`)
     }
 
@@ -271,7 +272,7 @@ const Passenger_View_1 = () => {
                     {/* <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required /> */}
                     {/* <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onfocusout={(e) => check_phone_no(e.target.value)} className="form-control border-5 bg-warning" id='phone_no'  required /> */}
                     <input type="number" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onBlur={check_phone_no} className="form-control border-5 bg-warning" id='phone_no'  required />
-                    {input_phone_no != ''? <span id='entered_phone_no'>Your number will be : {input_phone_no}</span>:'' }
+                    {input_phone_no && <span id='entered_phone_no'>Your number will be : {input_phone_no}</span> }
                     </div>
                 </div>
                 
