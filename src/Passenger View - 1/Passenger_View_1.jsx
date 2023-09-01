@@ -183,7 +183,7 @@ const Passenger_View_1 = () => {
                 onSubmit={sweet_alert}>
                 
                 {/* <h1 className='text-center'><b>Want a trip on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1> */}
-                <h1 className='text-center'><b>Want a trip? </b> </h1>
+                <h1 className='text-center'><b>Post your trip details here. Rider will contact you. </b> </h1>
                 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
