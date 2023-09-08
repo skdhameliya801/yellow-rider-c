@@ -13,10 +13,12 @@ const All_Passengers_List_2 = () => {
     }
     
     const urlParams = useParams()
-    // console.log(urlParams)
+    console.log(urlParams)
     let pickup_city = urlParams.pickup_city?.toUpperCase()
     let drop_city = urlParams.drop_city?.toUpperCase()
     let trip_date = urlParams.trip_date
+    let arrive_by_time = urlParams.arrive_by_time
+    
 
     // if(trip_date == ''){
     //     const currentDate = new Date();
@@ -44,7 +46,8 @@ const All_Passengers_List_2 = () => {
                 "start_n": N,
                 "pickup_city": pickup_city,
                 "drop_city": drop_city,
-                "trip_date": trip_date
+                "trip_date": trip_date,
+                "arrive_by_time": arrive_by_time
             });
     
             let config = {

@@ -10,7 +10,8 @@ export default function Search_Form() {
     {
         pickup_city : "",
         drop_city : "",
-        trip_date : ""
+        trip_date : "",
+        arrive_by_time : ""
     }
   );
 
@@ -66,12 +67,67 @@ export default function Search_Form() {
                 <input type="date" class="form-control bgMajorColor" placeholder="enter trip date" onChange={handleInputChange} name="trip_date" value={FilterBy.trip_date} required />
             </div>
             <div className="m-3">
-                <Link to={`/trips/${FilterBy.pickup_city}/${FilterBy.drop_city}/${FilterBy.trip_date}`}>
+            <label className="form-label"> Arrive By Time at Drop Address  </label>
+                    {/* <input type="time" className="form-control border-5" id='arrive_by_time' name='entry.452012505' required /> */}
+                    <select onChange={handleInputChange} value={FilterBy.arrive_by_time} className="form-select bgMajorColor" name='arrive_by_time' required>
+                        <option selected>Choose...</option>
+                        <option value="12:30 AM">12:30 AM</option>
+                        <option value="1:00 AM">1:00 AM</option>
+                        <option value="1:30 AM">1:30 AM</option>
+                        <option value="2:00 AM">2:00 AM</option>
+                        <option value="2:30 AM">2:30 AM</option>
+                        <option value="3:00 AM">3:00 AM</option>
+                        <option value="3:30 AM">3:30 AM</option>
+                        <option value="4:00 AM">4:00 AM</option>
+                        <option value="4:30 AM">4:30 AM</option>
+                        <option value="5:00 AM">5:00 AM</option>
+                        <option value="5:30 AM">5:30 AM</option>
+                        <option value="6:00 AM">6:00 AM</option>
+                        <option value="6:30 AM">6:30 AM</option>
+                        <option value="7:00 AM">7:00 AM</option>
+                        <option value="7:30 AM">7:30 AM</option>
+                        <option value="8:00 AM">8:00 AM</option>
+                        <option value="8:30 AM">8:30 AM</option>
+                        <option value="9:00 AM">9:00 AM</option>
+                        <option value="9:30 AM">9:30 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="10:30 AM">10:30 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="11:30 AM">11:30 AM</option>
+                        <option value="11:55 AM">11:55 AM</option>
+                        <option value="12:30 PM">12:30 PM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="1:30 PM">1:30 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="2:30 PM">2:30 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="3:30 PM">3:30 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="4:30 PM">4:30 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="5:30 PM">5:30 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                        <option value="6:30 PM">6:30 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                        <option value="7:30 PM">7:30 PM</option>
+                        <option value="8:00 PM">8:00 PM</option>
+                        <option value="8:30 PM">8:30 PM</option>
+                        <option value="9:00 PM">9:00 PM</option>
+                        <option value="9:30 PM">9:30 PM</option>
+                        <option value="10:00 PM">10:00 PM</option>
+                        <option value="10:30 PM">10:30 PM</option>
+                        <option value="11:00 PM">11:00 PM</option>
+                        <option value="11:30 PM">11:30 PM</option>
+                        <option value="11:55 PM">11:55 PM</option>
+                    </select>
+            </div>
+            <div className="m-3">
+                <Link to={`/trips/${FilterBy.pickup_city}/${FilterBy.drop_city}/${FilterBy.trip_date}/${FilterBy.arrive_by_time}`}>
                     <button type="submit" class="btn btn-success">Find Trips</button>
                 </Link>
                 <br /><b>or</b> <br />
                 <Link to={`/trips///`}>
-                    <button type="submit" class="btn btn-success">Any Cities Trips</button>
+                    <button type="submit" class="btn btn-success">Any City & Time</button>
                 </Link>
             </div>
         </form>

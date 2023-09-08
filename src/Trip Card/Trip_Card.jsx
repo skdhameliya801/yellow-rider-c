@@ -18,7 +18,7 @@ const Trip_Card = (props) => {
 
   return (
     <>
-        <div class="card scrollbar-custom" style={{"background":"white", "overflow":"auto","width":"100%","height":"43vh"}}>
+        <div class="card scrollbar-custom p-3" style={{"background":"white", "overflow":"auto","width":"100%","height":"43vh"}}>
             <div class="card-body">
                 {/* <h5 class="card-title">Card title</h5> */}
                 {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
@@ -40,19 +40,33 @@ const Trip_Card = (props) => {
                 <div className='row'>
                     <div className='col-6'>
                         <p>
+                            <b>Pickup Time : </b> <br />
+                            {props.each_trip.pickup_time ? props.each_trip.pickup_time : "---"}
+                        </p>
+                    </div>
+                    <div className='col-6'>
+                        <p>
                             <b>Arrive by Time : </b> <br />
                             {props.each_trip.arrive_by_time}
                         </p>
                     </div>
+                </div>
+
+                <div className='row'>
                     <div className='col-6'>
                         <p>
                             <b>Trip Date : </b> <br />
                             {props.each_trip.trip_date}
                         </p>
                     </div>
+
+                    <div className='col-6'>
+                        <p><b>Requested Fare : </b>{props.each_trip.req_fare}</p>
+                    </div>
+                    
                 </div>
                 
-                <p><b>Requested Fare : </b>{props.each_trip.req_fare}</p>
+                
                 
                 {/* <Whatsapp_Button user_in_session={props.user_in_session} /> */}
                 {/* <button class="button"><i class="fas fa-user"></i> Button 1</button> */}

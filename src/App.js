@@ -102,7 +102,17 @@ function App() {
       </main>
       <footer className="p-3 mb-5">
         {/* Footer content */}
-        <h4 className='text-center'>Have a nice ride...!</h4>
+        {/* <h4 className='text-center'>Have a nice ride...!</h4> */}
+        <div className='container'>
+          <div className='row text-center'>
+            <div className='col-6'>
+              <a href="https://chat.whatsapp.com/ENwHWuC1fVRHde8cPVN6xx" target='_blank'>Join WhatsApp Group</a>
+            </div>
+            <div className='col-6'>
+              <a href="https://chat.whatsapp.com/D5XRiKtIl2s2wmrg24tQaM" target='_blank'>Join WhatsApp Community</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
 

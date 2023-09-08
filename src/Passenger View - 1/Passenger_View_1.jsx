@@ -13,7 +13,7 @@ const Passenger_View_1 = () => {
 
 
     useEffect(() => {
-        // document.getElementById("hint").click();
+        document.getElementById("hint").click();
         // document.getElementById("response_message").style.display = "none";
     }, [])
 
@@ -82,6 +82,7 @@ const Passenger_View_1 = () => {
         let phone_no = document.getElementById("phone_no").value.trim()
         let full_drop_address = document.getElementById("full_drop_address").value.trim()
         let drop_city = document.getElementById("drop_city").value.toUpperCase().trim()
+        let pickup_time = document.getElementById("pickup_time").value
         let arrive_by_time = document.getElementById("arrive_by_time").value
         
         // let arrive_by_HH = document.getElementById("arrive_by_HH").value
@@ -100,6 +101,7 @@ const Passenger_View_1 = () => {
             // pickup_landmark,
             phone_no,
             full_drop_address,
+            pickup_time,
             arrive_by_time,
             pickup_city,
             drop_city,
@@ -183,7 +185,7 @@ const Passenger_View_1 = () => {
                 onSubmit={sweet_alert}>
                 
                 {/* <h1 className='text-center'><b>Want a trip on {(new Date().getFullYear() + "-" +(new Date().getMonth()+1) +"-"+ new Date().getDate()).toString()} ? </b> </h1> */}
-                <h1 className='text-center'><b>Post your trip details here. Rider will contact you. </b> </h1>
+                <h1 className='text-center'><b>Give your trip details here. Rider will contact you. </b> </h1>
                 
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
@@ -271,11 +273,69 @@ const Passenger_View_1 = () => {
                     </label>
                     {/* <input type="tel" pattern="[1-9]{1}[0-9]{9}" title="Only 10 digits Canadian WhatsApp number (e.g. 5483333597)" className="form-control border-5" id='phone_no'  required /> */}
                     {/* <input type="tel" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onfocusout={(e) => check_phone_no(e.target.value)} className="form-control border-5 bg-warning" id='phone_no'  required /> */}
-                    <input type="number" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onBlur={check_phone_no} className="form-control border-5 bg-warning" id='phone_no'  required />
+                    <input autoComplete='nope' type="number" title="WhatsApp number with country code (e.g. +15483333597)" placeholder='enter whatsapp no. here' onBlur={check_phone_no} className="form-control border-5 bg-warning" id='phone_no'  required />
                     {input_phone_no && <span id='entered_phone_no'>Your number will be : {input_phone_no}</span> }
                     </div>
                 </div>
                 
+                <div className="row mt-5 justify-content-center">
+                    <div className="col-sm-6">
+                    <label className="form-label"> <b>*Pick Up Time from Pickup Address : </b> </label>
+                    {/* <input type="time" className="form-control border-5" id='arrive_by_time' name='entry.452012505' required /> */}
+                    <select className="form-select border-5" id='pickup_time' required>
+                        <option selected>Choose...</option>
+                        <option value="12:30 AM">12:30 AM</option>
+                        <option value="1:00 AM">1:00 AM</option>
+                        <option value="1:30 AM">1:30 AM</option>
+                        <option value="2:00 AM">2:00 AM</option>
+                        <option value="2:30 AM">2:30 AM</option>
+                        <option value="3:00 AM">3:00 AM</option>
+                        <option value="3:30 AM">3:30 AM</option>
+                        <option value="4:00 AM">4:00 AM</option>
+                        <option value="4:30 AM">4:30 AM</option>
+                        <option value="5:00 AM">5:00 AM</option>
+                        <option value="5:30 AM">5:30 AM</option>
+                        <option value="6:00 AM">6:00 AM</option>
+                        <option value="6:30 AM">6:30 AM</option>
+                        <option value="7:00 AM">7:00 AM</option>
+                        <option value="7:30 AM">7:30 AM</option>
+                        <option value="8:00 AM">8:00 AM</option>
+                        <option value="8:30 AM">8:30 AM</option>
+                        <option value="9:00 AM">9:00 AM</option>
+                        <option value="9:30 AM">9:30 AM</option>
+                        <option value="10:00 AM">10:00 AM</option>
+                        <option value="10:30 AM">10:30 AM</option>
+                        <option value="11:00 AM">11:00 AM</option>
+                        <option value="11:30 AM">11:30 AM</option>
+                        <option value="11:55 AM">11:55 AM</option>
+                        <option value="12:30 PM">12:30 PM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="1:30 PM">1:30 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="2:30 PM">2:30 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="3:30 PM">3:30 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="4:30 PM">4:30 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="5:30 PM">5:30 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                        <option value="6:30 PM">6:30 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                        <option value="7:30 PM">7:30 PM</option>
+                        <option value="8:00 PM">8:00 PM</option>
+                        <option value="8:30 PM">8:30 PM</option>
+                        <option value="9:00 PM">9:00 PM</option>
+                        <option value="9:30 PM">9:30 PM</option>
+                        <option value="10:00 PM">10:00 PM</option>
+                        <option value="10:30 PM">10:30 PM</option>
+                        <option value="11:00 PM">11:00 PM</option>
+                        <option value="11:30 PM">11:30 PM</option>
+                        <option value="11:55 PM">11:55 PM</option>
+                    </select>
+                    </div>
+                </div>
+
                 <div className="row mt-5 justify-content-center">
                     <div className="col-sm-6">
                     <label className="form-label"> <b>*Arrive By Time at Drop Address : </b> </label>

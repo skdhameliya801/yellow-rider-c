@@ -24,10 +24,14 @@ root.render(
       <Route exact path="/passenger_list" element={<All_Passengers_List_1 />} />
       <Route exact path="/choose" element={<Search_Form />} />
       
-      <Route exact path="/trips/:pickup_city/:drop_city/:trip_date" element={<All_Passengers_List_2 />} />
+      {/* <Route exact path="/trips/:pickup_city/:drop_city/:trip_date" element={<All_Passengers_List_2 />} /> */}
+      <Route exact path="/trips/:pickup_city/:drop_city/:trip_date/:arrive_by_time" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips/:pickup_city/:drop_city/:trip_date/" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips//:drop_city/:trip_date/:arrive_by_time" element={<All_Passengers_List_2 />} />
       <Route exact path="/trips/:pickup_city//" element={<All_Passengers_List_2 />} />
       <Route exact path="/trips//:drop_city/" element={<All_Passengers_List_2 />} />
       <Route exact path="/trips///:trip_date" element={<All_Passengers_List_2 />} />
+      <Route exact path="/trips///:trip_date/:arrive_by_time" element={<All_Passengers_List_2 />} />
       <Route exact path="/trips/:pickup_city/:drop_city/" element={<All_Passengers_List_2 />} />
       <Route exact path="/trips/:pickup_city//:trip_date" element={<All_Passengers_List_2 />} />
       <Route exact path="/trips//:drop_city/:trip_date" element={<All_Passengers_List_2 />} />
